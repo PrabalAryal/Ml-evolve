@@ -1,0 +1,51 @@
+#union
+SELECT c_name FROM depositor UNION SELECT c_name FROM borrower
+#intersection
+SELECT c_name FROM depositor INTERSECT SELECT c_name FROM borrower
+#difference
+SELECT c_name FROM depositor EXCEPT SELECT c_name FROM borrower
+#cartessian product
+SELECT * FROM depositor 
+CROSS JOIN borrower
+
+SELECT depositor.c_name FROM depositor
+CROSS JOIN borrower WHERE depositor.c_name = borrower.c_name
+
+SELECT borrower.c_name, customer.c_city,borrower.loan_no FROM borrower
+CROSS JOIN customer WHERE borrower.c_name = customer.c_name AND c_city LIKE 'Bhaktapur'
+
+#join
+SELECT * FROM depositor
+JOIN customer ON depositor.c_name = customer.c_name
+
+SELECT * FROM depositor
+JOIN borrower ON depositor.c_name = borrower.c_name
+
+
+#inner join 
+SELECT * FROM depositor
+INNER JOIN customer ON depositor.c_name = customer.c_name
+
+
+SELECT Depositor.c_name
+FROM Depositor
+INNER JOIN Borrower ON Depositor.c_name = Borrower.c_name;
+
+#outer join
+SELECT *
+FROM Depositor
+LEFT JOIN Borrower ON Depositor.c_name = Borrower.c_name
+UNION
+SELECT *
+FROM Depositor
+RIGHT JOIN Borrower ON Depositor.c_name = Borrower.c_name
+
+#left join
+SELECT *
+FROM Depositor
+LEFT JOIN Borrower ON Depositor.c_name = Borrower.c_name;
+
+#right join
+SELECT *
+FROM Depositor
+RIGHT JOIN Borrower ON Depositor.c_name = Borrower.c_name;

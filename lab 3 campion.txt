@@ -1,0 +1,56 @@
+
+1.Find the customer name who have account at a bank.
+=> SELECT c_name FROM depositor
+
+2.Find the customer name who have loan at bank.
+=> SELECT c_name FROM borrower
+
+3.Find the customer name and city where they live
+=> SELECT c_name,c_city FROM customer
+
+4.Find the customer name who live in ktm city
+=> SELECT c_name FROM customer WHERE c_city='ktm'
+
+5.Find the customer name and customer street who live in S1 street.
+=> SELECT c_name,c_street FROM customer WHERE c_street = 's1'
+
+6.Find the customer name and customer street who live in S1 street 
+  or who live in lalitpur
+=>SELECT c_name,c_street FROM customer WHERE c_street = 's1' OR c_city='lalitpur'
+
+7.Find the customer name and customer street who live in S1 street 
+  and who live in lalitpur
+=> SELECT c_name,c_street FROM customer WHERE c_street = 's1' AND c_city='lalitpur'
+
+8.Find the branch name whose assets is greater than or equals to 120000.
+=> SELECT b_name FROM branch WHERE assets >= 120000
+
+9. Find the account no whose balance is between 12000 to 25000.
+=> SELECT acc_no FROM ACCOUNT WHERE balance >= 12000 AND balance <= 25000
+
+10.Find the loan details of loan whose loan amount is 
+   between 10000 to 100000
+=> SELECT * FROM loan WHERE amount >= 10000 AND amount <=100000
+
+11.Find the loan_no and amount whose loan is maintained 
+   at bhaktapur branch.
+=> SELECT loan_no,amount FROM loan WHERE b_name = 'bhaktapur'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  	

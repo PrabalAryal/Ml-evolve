@@ -1,0 +1,90 @@
+CREATE DATABASE lab
+USE lab 
+CREATE TABLE branch(
+	b_name VARCHAR(20),
+	assets INT
+);
+
+CREATE TABLE ACCOUNT(
+	acc_no INT PRIMARY KEY,
+	balance INT
+);
+CREATE TABLE depositor(
+	c_name VARCHAR(20),
+	acc_no INT,
+	CONSTRAINT fk_acc_no FOREIGN KEY(acc_no) REFERENCES ACCOUNT(acc_no)
+);
+CREATE TABLE customer(
+	c_name VARCHAR(20),
+	c_street VARCHAR(20),
+	c_city VARCHAR(20)
+);
+CREATE TABLE loan(
+	loan_no VARCHAR(20) PRIMARY KEY,
+	b_name VARCHAR(20),
+	amount INT
+);
+CREATE TABLE borrower(
+	c_name VARCHAR(20),
+	loan_no VARCHAR(20),
+	CONSTRAINT fk_loan_no FOREIGN KEY(loan_no) REFERENCES loan(loan_no)
+);
+
+
+INSERT INTO branch (b_name, assets) VALUES
+('New road', 1500000),
+('Bhaktapur', 1000000),
+('LaganKhel', 1200000);
+
+INSERT INTO ACCOUNT (acc_no, balance) VALUES
+(100, 10000),
+(101, 15000),
+(102, 25000);
+
+INSERT INTO customer (c_name, c_street, c_city) VALUES
+('Ram', 'S1', 'Ktm'),
+('Geeta', 'S5', 'Ktm'),
+('Hari', 'S2', 'Lalitpur'),
+('Rita', 'S3', 'Bhaktapur'),
+('John', 'S1', 'Bhaktapur');
+
+INSERT INTO depositor (c_name, acc_no) VALUES
+('Geeta', 102),
+('Hari', 101),
+('Ram', 101);
+
+INSERT INTO loan (loan_no, b_name, amount) VALUES
+('L100', 'Bhaktapur', 100000),
+('L101', 'Lalitpur', 20000),
+('L102', 'Bhaktapur', 50000);
+
+INSERT INTO Borrower (c_name, loan_no) VALUES
+('Hari', 'L102'),
+('Rita', 'L100'),
+('John', 'L101');
+
+/* selecting branch name where branch name is bhaktapur */
+SELECT b_name FROM branch WHERE b_name = 'bhaktapur'
+
+/* selecting data from cusstomer where c_street is s1 */
+SELECT * FROM customer WHERE c_street = 's1'
+
+/* selecting c_name and c_city from cusstomer where c_street is s1 */
+SELECT c_name,c_city FROM customer WHERE c_street = 's1'
+
+SELECT * FROM loan
+
+/* selectt loan number and branch name where amount is greater than 30000*/
+
+SELECT loan_no,b_name FROM loan WHERE amount>30000
+
+
+/* selecting data from cusstomer where c_street is s1 and c_city is ktm*/
+SELECT * FROM customer WHERE c_city = 'ktm' AND c_street='s1'
+
+
+/* selecting data from cusstomer where c_street is s1 or c_city is ktm*/
+SELECT * FROM customer WHERE c_city = 'ktm' OR c_street='s1'
+
+/* selecting c_name from cusstomer where c_city is bhaktapur*/
+SELECT c_name FROM customer WHERE c_city = 'bhaktapur'

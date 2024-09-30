@@ -1,0 +1,99 @@
+#distinct
+SELECT DISTINCT c_city FROM customer
+
+#inserting null value
+INSERT INTO customer (c_name, c_street) 
+VALUES ('Shyam', 'S1')
+
+
+
+#null
+SELECT * FROM customer WHERE c_city IS NOT NULL
+
+SELECT * FROM customer WHERE c_city IS NULL
+
+
+#count
+SELECT COUNT(c_name) FROM customer
+
+#group by
+
+SELECT COUNT(*),c_city FROM customer GROUP BY c_city
+SELECT * FROM loan
+SELECT b_name,SUM(amount) AS 'sum' FROM loan GROUP BY b_name
+
+#sum
+SELECT SUM(amount) AS 'total loan' FROM loan
+
+#max
+SELECT MAX(amount) FROM loan
+
+#min
+SELECT MIN(amount) FROM loan
+
+
+#creating table that doesnt accept null value
+CREATE TABLE Test(
+	b_name VARCHAR(20) NOT NULL,
+	assets INT DEFAULT 1
+);
+SELECT * FROM test
+INSERT INTO Test (b_name,assets) VALUES
+('sanepa',3)
+
+
+CREATE TABLE testnull(
+	t_name VARCHAR(20),
+	t_street INT NOT NULL,
+	t_city VARCHAR(20) DEFAULT 'ktm'
+ );
+
+ INSERT INTO testnull(t_name,t_street,t_city)
+ VALUES ('xyz',25,'lalitpur')
+
+ SELECT * FROM testnull
+ 
+ #adding column
+ ALTER TABLE testnull
+ ADD t_country VARCHAR(20)
+
+ #deleting column
+ ALTER TABLE testnull
+ DROP COLUMN t_country
+
+
+SELECT c_city FROM customer GROUP BY c_city
+
+SELECT COUNT(*) AS 'city count',c_city FROM customer GROUP BY c_city
+
+SELECT c_city FROM customer GROUP BY c_city
+
+
+
+#unique
+CREATE TABLE tbl1(
+	id INT,
+	username VARCHAR(10) UNIQUE,
+	PASSWORD VARCHAR(20),
+	PRIMARY KEY(id)
+);
+SELECT * FROM tbl1
+INSERT INTO tbl1(id,username,PASSWORD)
+VALUES(3,'ABCde','abc12345')
+
+
+#update
+UPDATE customer
+SET c_city = 'lalitpur'
+WHERE c_name = 'shyam'
+
+
+UPDATE tbl1
+SET PASSWORD = '12345678910'
+WHERE username = 'ABCd'
+#delete 
+DELETE FROM customer WHERE c_street='s1'
+
+DELETE FROM tbl1
+
+
